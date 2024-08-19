@@ -164,4 +164,8 @@ DATA_UPLOAD = {
     'MAX_MEMORY_SIZE': 20971520,
     'FILE_MAX_SIZE': 20971520,
 }
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 

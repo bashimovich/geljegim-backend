@@ -186,3 +186,20 @@ class Docs(models.Model):
 
     def __str__(self):
         return self.title_tm
+
+class Vacancy(models.Model):
+    title_tm = models.CharField(max_length=200, blank=False, null=False)
+    title_en = models.CharField(max_length=200, blank=False, null=False)
+    title_ru = models.CharField(max_length=200, blank=False, null=False)
+    vacancy_url = models.CharField(max_length=200, blank=False, null=False)
+    views = models.IntegerField(default=0)
+    is_publish = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Vacancies"
+
+    def __str__(self):
+        return self.title_tm

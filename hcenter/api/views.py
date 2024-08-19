@@ -131,3 +131,16 @@ class DocsViewSet(ReadOnlyModelViewSet):
         instance.save()  # Save the updated views count
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
+class VacancyViewSet(ReadOnlyModelViewSet):
+    queryset = Vacancy.objects.filter(is_active=True, is_publish = True).order_by('-id')
+    serializer_class = VacanciesSerializer
+    search_fields = ['title_tm', 'title_ru', 'title_en']
+    filter_backends = [filters.SearchFilter]
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.views += 1  # Increment views count
+        instance.save()  # Save the updated views count
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)

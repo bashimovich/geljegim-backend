@@ -51,3 +51,8 @@ class DocssSerializer(serializers.ModelSerializer):
     class Meta:
         model = Docs
         fields = '__all__'
+
+class VacanciesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacancy
+        fields = '__all__'

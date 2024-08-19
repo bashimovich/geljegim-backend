@@ -51,6 +51,7 @@ router.register(r'all-news', api_viewset.AllNewsViewSet,
 
 router.register(r'laws', api_viewset.LawsViewSet, basename="laws")
 router.register(r'docs', api_viewset.DocsViewSet, basename="docs")
+router.register(r'vacancy', api_viewset.VacancyViewSet, basename="vacancy")
 
 urlpatterns = [
     path(r'', include(router.urls)),

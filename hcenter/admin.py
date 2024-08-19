@@ -25,6 +25,7 @@ class SideBannerAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name_tm",)
+    search_fields = ('name_tm', 'name_ru', 'name_en', )
 
 class ArticlesAdmin(admin.ModelAdmin):
     list_display = ( "get_images", "title_tm", )
@@ -38,6 +39,8 @@ class ArticlesAdmin(admin.ModelAdmin):
 
 class MediasAdmin(admin.ModelAdmin):
     list_display = ( "get_images", "title_tm", )
+    list_filter = ("is_publish", "is_active", "updated_at", )
+    search_fields = ('title_tm', 'title_ru', 'title_en', )
     inlines = (WebImageInline, )
     model = Medias
 
@@ -49,12 +52,22 @@ class MediasAdmin(admin.ModelAdmin):
 
 class LawsAdmin(admin.ModelAdmin):
     list_display = ( "title_tm", )
+    list_filter = ("is_publish", "is_active", "updated_at", )
+    search_fields = ('title_tm', 'title_ru', 'title_en', )
     model = Laws
 
 class DocsAdmin(admin.ModelAdmin):
     list_display = ( "title_tm", )
+    list_filter = ("is_publish", "is_active", "updated_at", )
+    search_fields = ('title_tm', 'title_ru', 'title_en', )
     model = Docs
         
+class VacancyAdmin(admin.ModelAdmin):
+    list_display = ( "title_tm", )
+    list_filter = ("is_publish", "is_active", "updated_at", )
+    search_fields = ('title_tm', 'title_ru', 'title_en', )
+    model = Vacancy
+
 admin.site.register(BannerMain, BannerMainAdmin)
 admin.site.register(SideBanner, SideBannerAdmin)
 admin.site.register(Category, CategoryAdmin)
@@ -62,3 +75,4 @@ admin.site.register(Articles, ArticlesAdmin)
 admin.site.register(Medias, MediasAdmin)
 admin.site.register(Laws, LawsAdmin)
 admin.site.register(Docs, DocsAdmin)
+admin.site.register(Vacancy, VacancyAdmin)
